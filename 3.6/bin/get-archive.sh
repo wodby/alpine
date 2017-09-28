@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+set -e
+
+if [[ -n "${DEBUG}" ]]; then
+    set -x
+fi
+
 source=$1
 tmp_destination=$2
 allowed_archives="${@:3}"
