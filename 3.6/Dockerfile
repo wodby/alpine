@@ -15,4 +15,4 @@ RUN set -xe && \
 
     wget -qO- ${GOTPL_URL} | tar xz -C /usr/local/bin
 
-COPY functions /usr/local/bin/
+COPY bin /usr/local/bin/
