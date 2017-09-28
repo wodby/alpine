@@ -6,7 +6,7 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
-dir="${1:/etc/ssh}"
+dir="${1:-/etc/ssh}"
 
 mkdir -p "${dir}"
 ssh-keygen -qb 2048 -t rsa -N "" -f "${dir}/ssh_host_rsa_key"
