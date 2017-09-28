@@ -9,26 +9,27 @@ env:
   global:
     - LATEST_VERSION=3.6
   matrix:
-    - VERSION=3.6
-    - VERSION=3.4
+    - LINE=3.x VERSION=3.6 ALPINE_VER=3.6
+    - LINE=3.x VERSION=3.4 ALPINE_VER=3.4
 
 before_install:
   - sudo apt-get update
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce=17.06.2~ce-0~ubuntu
 
 script:
-  - travis_retry make VERSION=$VERSION && make test VERSION=$VERSION
+  - cd ./$LINE
+  - travis_retry make VERSION=$VERSION ALPINE_VER=$ALPINE_VER && make test VERSION=$VERSION ALPINE_VER=$ALPINE_VER
 
 after_success: |
   if [ "$TRAVIS_PULL_REQUEST" == "false" ] && ([ "$TRAVIS_BRANCH" == "master" ] || [ -n "$TRAVIS_TAG" ]); then
     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    make release VERSION=$VERSION
+    make release VERSION=$VERSION ALPINE_VER=$ALPINE_VER
 
     if [ -n "$TRAVIS_TAG" ]; then
-      make release VERSION="$VERSION-$TRAVIS_TAG"
+      make release VERSION="$VERSION-$TRAVIS_TAG" ALPINE_VER=$ALPINE_VER
     fi
 
     if [ "$VERSION" == "$LATEST_VERSION" ]; then
-      make release VERSION=latest
+      make release VERSION=latest ALPINE_VER=$ALPINE_VER
     fi
   fi

@@ -1,16 +1,17 @@
 -include env_make
 
 VERSION ?= 3.6
+ALPINE_VER ?= 3.6
 
 REPO = wodby/alpine
-NAME = alpine-$(VERSION)
+NAME = alpine-$(ALPINE_VER)
 
 .PHONY: build test push shell run start stop logs clean release
 
 default: build
 
 build:
-	docker build -t $(REPO):$(VERSION) --build-arg FROM_TAG=$(VERSION) ./
+	docker build -t $(REPO):$(VERSION) --build-arg ALPINE_VER=$(ALPINE_VER) ./
 
 test:
 	exit 0
