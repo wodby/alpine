@@ -5,6 +5,9 @@ ENV GOTPL_URL "https://github.com/wodby/gotpl/releases/download/0.1.5/gotpl-alpi
 RUN set -xe && \
 
     apk add --update --no-cache \
+        bash \
+        ca-certificates \
+        curl \
         gzip \
         tar \
         unzip \
