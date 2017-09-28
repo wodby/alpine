@@ -10,6 +10,7 @@ env:
     - LATEST_VERSION=3.6
   matrix:
     - VERSION=3.6
+    - VERSION=3.4
 
 before_install:
   - sudo apt-get update
