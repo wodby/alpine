@@ -1,0 +1,34 @@
+language: python
+
+sudo: required
+
+services:
+  - docker
+
+env:
+  global:
+    - LATEST_VERSION=3.6
+  matrix:
+    - VERSION=3.6
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce=17.06.2~ce-0~ubuntu
+
+script:
+  - cd ./$VERSION
+  - travis_retry make DEBUG=$DEBUG && make test DEBUG=$DEBUG
+
+after_success: |
+  if [ "$TRAVIS_PULL_REQUEST" == "false" ] && ([ "$TRAVIS_BRANCH" == "master" ] || [ -n "$TRAVIS_TAG" ]); then
+    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    make release
+
+    if [ -n "$TRAVIS_TAG" ]; then
+      make release VERSION="$VERSION-$TRAVIS_TAG"
+    fi
+
+    if [ "$VERSION" == "$LATEST_VERSION" ]; then
+      make release VERSION=latest
+    fi
+  fi
