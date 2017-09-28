@@ -34,10 +34,10 @@ if [[ "${archive}" =~ "${regex}"$ ]]; then
         unzip "${archive}" -x "__MACOSX/*" -d "${tmp_destination}"
         rm "${archive}"
     elif [[ "${archive}" =~ \.tgz$ ]] || [[ "${archive}" =~ \.tar.gz$ ]]; then
-        tar zxf "${archive}" --exclude="./__MACOSX" -C "${tmp_destination}"
+        tar zxf "${archive}" --no-same-owner --exclude="./__MACOSX" -C "${tmp_destination}"
         rm "${archive}"
     elif [[ "${archive}" =~ \.tar$ ]]; then
-        tar xf "${archive}" --exclude="./__MACOSX" -C "${tmp_destination}"
+        tar xf "${archive}" --no-same-owner --exclude="./__MACOSX" -C "${tmp_destination}"
         rm "${archive}"
     elif [[ "${archive}" =~ \.gz$ ]]; then
         gunzip "${archive}"

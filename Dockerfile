@@ -1,4 +1,6 @@
-FROM alpine:3.4
+ARG FROM_TAG
+
+FROM alpine:${FROM_TAG}
 
 ENV GOTPL_URL "https://github.com/wodby/gotpl/releases/download/0.1.5/gotpl-alpine-linux-amd64-0.1.5.tar.gz"
 
