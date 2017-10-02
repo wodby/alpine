@@ -18,18 +18,18 @@ before_install:
 
 script:
   - cd ./$LINE
-  - travis_retry make VERSION=$VERSION ALPINE_VER=$ALPINE_VER && make test VERSION=$VERSION ALPINE_VER=$ALPINE_VER
+  - travis_retry make && make test
 
 after_success: |
   if [ "$TRAVIS_PULL_REQUEST" == "false" ] && ([ "$TRAVIS_BRANCH" == "master" ] || [ -n "$TRAVIS_TAG" ]); then
     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    make release VERSION=$VERSION ALPINE_VER=$ALPINE_VER
+    make release
 
     if [ -n "$TRAVIS_TAG" ]; then
-      make release VERSION="$VERSION-$TRAVIS_TAG" ALPINE_VER=$ALPINE_VER
+      make release VERSION="$VERSION-$TRAVIS_TAG"
     fi
 
     if [ "$VERSION" == "$LATEST_VERSION" ]; then
-      make release VERSION=latest ALPINE_VER=$ALPINE_VER
+      make release VERSION=latest
     fi
   fi

@@ -14,7 +14,7 @@ build:
 	docker build -t $(REPO):$(VERSION) --build-arg ALPINE_VER=$(ALPINE_VER) ./
 
 test:
-	exit 0
+	IMAGE=$(REPO):$(VERSION) ./tests.sh
 
 push:
 	docker push $(REPO):$(VERSION)
