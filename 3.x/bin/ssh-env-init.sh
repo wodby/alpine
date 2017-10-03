@@ -6,6 +6,10 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
+if [ "$#" -lt 1 ]; then
+    echo "Illegal number of parameters"
+fi
+
 printenv | xargs -I{} echo {} | awk ' \
     BEGIN { FS = "=" }; { \
         if ($1 != "HOME" \
@@ -15,4 +19,4 @@ printenv | xargs -I{} echo {} | awk ' \
             \
             print ""$1"="$2"" \
         } \
-    }' > ~/.ssh/environment
+    }' > /home/"${1}"/.ssh/environment

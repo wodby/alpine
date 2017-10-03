@@ -6,6 +6,10 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
+if [ "$#" -lt 6 ]; then
+    echo "Illegal number of parameters"
+fi
+
 started=0
 command=$1
 service=$2
