@@ -16,19 +16,3 @@ It's a basic alpine image used in docker images by Wodby
 | ------------------------------------------------------------------ | ------ |
 | [3.6](https://github.com/wodby/alpine/tree/master/3.x/Dockerfile)  | 3.6    |
 | [3.4](https://github.com/wodby/alpine/tree/master/3.x/Dockerfile)  | 3.4    |
-
-## Environment Variables
-
-The image does not include openssh package.
-
-| Variable                         | Default Value  | Description |
-| -------------------------------- | -------------- | ----------- |
-| SSHD_HOST_KEYS_DIR               | /etc/ssh       |             |
-| SSHD_LOG_LEVEL                   | INFO           |             |
-| SSHD_USE_PAM                     | yes            |             |
-| SSHD_GATEWAY_PORTS               | no             |             |
-| SSHD_PERMIT_USER_ENV             | no             |             |
-| SSHD_USE_DNS                     | yes            |             |
-| SSHD_USE_PRIVILEGE_SEPARATION    | sandbox        |             |
-| SSHD_DISABLE_STRICT_KEY_CHECKING |                |             |
- 
