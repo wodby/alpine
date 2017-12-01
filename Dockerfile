@@ -5,7 +5,7 @@ FROM alpine:${ALPINE_VER}
 ENV GOTPL_URL "https://github.com/wodby/gotpl/releases/download/0.1.5/gotpl-alpine-linux-amd64-0.1.5.tar.gz"
 
 RUN set -xe && \
-
+    \
     apk add --update --no-cache \
         bash \
         ca-certificates \
@@ -13,8 +13,10 @@ RUN set -xe && \
         gzip \
         tar \
         unzip \
-        wget && \
-
-    wget -qO- ${GOTPL_URL} | tar xz -C /usr/local/bin
+        wget; \
+    \
+    wget -qO- ${GOTPL_URL} | tar xz -C /usr/local/bin; \
+    \
+    rm -rf /var/cache/apk/*
 
 COPY bin /usr/local/bin/

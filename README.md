@@ -15,7 +15,13 @@ This is a basic alpine image used in Wodby's docker images
 * [Travis CI builds](https://travis-ci.org/wodby/alpine) 
 * [Docker Hub](https://hub.docker.com/r/wodby/alpine) 
 
-| Image tag (Dockerfile)                                         | Alpine |
-| -------------------------------------------------------------- | ------ |
-| [3.6](https://github.com/wodby/alpine/tree/master/Dockerfile)  | 3.6    |
-| [3.4](https://github.com/wodby/alpine/tree/master/Dockerfile)  | 3.4    |
+[_(Dockerfile)_]: https://github.com/wodby/alpine/tree/master/Dockerfile
+
+Supported tags and respective `Dockerfile` links:
+
+* `3.7`, `latest` [_(Dockerfile)_]
+* `3.6` [_(Dockerfile)_]
+* `3.5` [_(Dockerfile)_]
+* `3.4` [_(Dockerfile)_]
+
+For better reliability we additionally release images with stability tags (`wodby/alpine:3.7-X.X.X`) which correspond to [git tags](https://github.com/wodby/alpine/releases). We **strongly recommend** using images only with stability tags.
