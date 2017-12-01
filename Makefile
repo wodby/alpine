@@ -1,6 +1,6 @@
 -include env_make
 
-ALPINE_VER ?= 3.7
+ALPINE_VER ?= 3.6
 TAG ?= $(ALPINE_VER)
 
 REPO = wodby/alpine

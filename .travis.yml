@@ -7,11 +7,12 @@ services:
 
 env:
   global:
-    - LATEST_TAG=3.7
+#    - LATEST_TAG=3.7
+    - LATEST_TAG=3.6
     - DOCKER_VERSION=17.06.2
   matrix:
-    - TAG=3.7 ALPINE_VER=3.7 EXTRA_TAG=3
-    - TAG=3.6 ALPINE_VER=3.6
+#    - TAG=3.7 ALPINE_VER=3.7
+    - TAG=3.6 ALPINE_VER=3.6 EXTRA_TAG=3
     - TAG=3.5 ALPINE_VER=3.5
     - TAG=3.4 ALPINE_VER=3.4
 

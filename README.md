@@ -19,9 +19,8 @@ This is a basic alpine image used in Wodby's docker images
 
 Supported tags and respective `Dockerfile` links:
 
-* `3.7`, `latest` [_(Dockerfile)_]
-* `3.6` [_(Dockerfile)_]
+* `3.6`, `latest` [_(Dockerfile)_]
 * `3.5` [_(Dockerfile)_]
 * `3.4` [_(Dockerfile)_]
 
-For better reliability we additionally release images with stability tags (`wodby/alpine:3.7-X.X.X`) which correspond to [git tags](https://github.com/wodby/alpine/releases). We **strongly recommend** using images only with stability tags.
+For better reliability we additionally release images with stability tags (`wodby/alpine:3.6-X.X.X`) which correspond to [git tags](https://github.com/wodby/alpine/releases). We **strongly recommend** using images only with stability tags.
