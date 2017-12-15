@@ -62,7 +62,7 @@ run sh -c "compare-semver.sh 3.4.6 4.3.5 || echo 'no'" | grep -q "no"
 run sh -c "compare-semver.sh 3.4.6 4.3.5 '<'"
 run sh -c "compare-semver.sh 3.4.6 3.4.6 '='"
 
-run_root sh -c "apk add --update openssh-keygen;
+run_root sh -c "apk add --update openssh-keygen || apk add --update openssh-client;
                 gen-ssh-keys.sh && rm /etc/ssh/ssh_rsa_key*;
                 gen-ssh-keys.sh 'rsa dsa ecdsa ed25519'"
 
