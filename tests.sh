@@ -63,8 +63,8 @@ run sh -c "compare-semver.sh 3.4.6 4.3.5 '<'"
 run sh -c "compare-semver.sh 3.4.6 3.4.6 '='"
 
 run_root sh -c "apk add --update openssh-keygen &&
-                ssh-generate-keys.sh &&
+                gen-ssh-keys.sh &&
                 rm /etc/ssh/ssh_rsa_key* &&
-                ssh-generate-keys.sh 'rsa dsa ecdsa ed25519'"
+                gen-ssh-keys.sh 'rsa dsa ecdsa ed25519'"
 
-run_root sh -c "apk add --update libressl && ssl-generate-certs.sh /tmp wodby.com test 365"
+run_root sh -c "apk add --update libressl && gen-ssl-certs.sh /tmp wodby.com test 365"
