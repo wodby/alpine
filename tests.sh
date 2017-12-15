@@ -66,3 +66,5 @@ run_root sh -c "apk add --update openssh-keygen &&
                 ssh-generate-keys.sh &&
                 rm /etc/ssh/ssh_rsa_key* &&
                 ssh-generate-keys.sh 'rsa dsa ecdsa ed25519'"
+
+run_root sh -c "apk add --update libressl && ssl-generate-certs.sh /tmp wodby.com test 365"
