@@ -4,7 +4,7 @@ FROM alpine:${ALPINE_VER}
 
 ENV GOTPL_URL "https://github.com/wodby/gotpl/releases/download/0.1.5/gotpl-alpine-linux-amd64-0.1.5.tar.gz"
 
-RUN set -xe && \
+RUN set -xe; \
     \
     apk add --update --no-cache \
         bash \

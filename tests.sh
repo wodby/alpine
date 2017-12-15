@@ -12,6 +12,10 @@ run() {
     docker run --rm -e DEBUG "${IMAGE}" "${@}"
 }
 
+run_root() {
+    docker run --user=0 --rm -e DEBUG "${IMAGE}" "${@}"
+}
+
 echo "START TESTING get-archive.sh"
 echo
 
@@ -52,3 +56,13 @@ echo "OK"
 
 echo
 echo "END TESTING get-archive.sh"
+
+run sh -c "compare-semver.sh 4.3.6 4.3.5"
+run sh -c "compare-semver.sh 3.4.6 4.3.5 || echo 'no'" | grep -q "no"
+run sh -c "compare-semver.sh 3.4.6 4.3.5 '<'"
+run sh -c "compare-semver.sh 3.4.6 3.4.6 '='"
+
+run_root sh -c "apk add --update openssh-keygen &&
+                sshd-generate-keys.sh &&
+                rm /etc/ssh/ssh_host_rsa_key* &&
+                sshd-generate-keys.sh 'rsa dsa ecdsa ed25519'"
