@@ -6,6 +6,12 @@ TAG ?= $(ALPINE_VER)
 REPO = wodby/alpine
 NAME = alpine-$(ALPINE_VER)
 
+ifneq ($(STABILITY_TAG),)
+    ifneq ($(TAG),latest)
+        override TAG := $(TAG)-$(STABILITY_TAG)
+    endif
+endif
+
 .PHONY: build test push shell run start stop logs clean release
 
 default: build
