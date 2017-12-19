@@ -51,4 +51,4 @@ compare_versions () {
     fi
 }
 
-exit "$(compare_versions "${1}" "${2}" "${3:->}")"
+echo "$(compare_versions "${1}" "${2}" "${3:->}")"

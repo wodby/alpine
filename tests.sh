@@ -57,10 +57,10 @@ echo "OK"
 echo
 echo "END TESTING get-archive.sh"
 
-run sh -c "compare-semver.sh 4.3.6 4.3.5"
-run sh -c "compare-semver.sh 3.4.6 4.3.5 || echo 'no'" | grep -q "no"
-run sh -c "compare-semver.sh 3.4.6 4.3.5 '<'"
-run sh -c "compare-semver.sh 3.4.6 3.4.6 '='"
+run sh -c '[[ $(compare-semver.sh "4.3.6" "4.3.5") == 0 ]];'
+run sh -c '[[ $(compare-semver.sh "3.3.6" "4.3.5") == 1 ]];'
+run sh -c '[[ $(compare-semver.sh "3.3.6" "4.3.5" "<") == 0 ]];'
+run sh -c '[[ $(compare-semver.sh "3.3.6" "3.3.6" "=") == 0 ]];'
 
 run_root sh -c "apk add --update openssh-keygen || apk add --update openssh-client;
                 gen-ssh-keys.sh && rm /etc/ssh/ssh_rsa_key*;
