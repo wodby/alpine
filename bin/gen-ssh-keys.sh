@@ -22,7 +22,7 @@ do
         flags="${flags} -b 2048"
     fi
 
-    if [[ -f "${dir}/ssh_${type}_key" ]]; then
+    if [[ ! -f "${dir}/ssh_${type}_key" ]]; then
         ssh-keygen ${flags} -t "${type}" -N "" -f "${dir}/ssh_${type}_key"
     fi
 
