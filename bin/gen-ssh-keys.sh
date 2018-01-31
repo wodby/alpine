@@ -22,7 +22,10 @@ do
         flags="${flags} -b 2048"
     fi
 
-    ssh-keygen ${flags} -t "${type}" -N "" -f "${dir}/ssh_${type}_key"
+    if [[ -f "${dir}/ssh_${type}_key" ]]; then
+        ssh-keygen ${flags} -t "${type}" -N "" -f "${dir}/ssh_${type}_key"
+    fi
+
     chmod 0600 "${dir}/ssh_${type}_key"
     chmod 0644 "${dir}/ssh_${type}_key.pub"
 done
