@@ -12,10 +12,6 @@ run() {
     docker run --rm -e DEBUG "${IMAGE}" "${@}"
 }
 
-run_root() {
-    docker run --user=0 --rm -e DEBUG "${IMAGE}" "${@}"
-}
-
 echo "START TESTING get-archive.sh"
 echo
 
@@ -62,8 +58,15 @@ run sh -c '[[ $(compare-semver.sh "3.3.6" "4.3.5") == 1 ]];'
 run sh -c '[[ $(compare-semver.sh "3.3.6" "4.3.5" "<") == 0 ]];'
 run sh -c '[[ $(compare-semver.sh "3.3.6" "3.3.6" "=") == 0 ]];'
 
-run_root sh -c "apk add --update openssh-keygen || apk add --update openssh-client;
-                gen-ssh-keys.sh && rm /etc/ssh/ssh_rsa_key*;
-                gen-ssh-keys.sh 'rsa dsa ecdsa ed25519'"
+run sh -c "apk add --update openssh-keygen || apk add --update openssh-client;
+           gen-ssh-keys.sh && rm /etc/ssh/ssh_rsa_key*;
+           gen-ssh-keys.sh 'rsa dsa ecdsa ed25519'"
 
-run_root sh -c "apk add --update libressl || apk add --update openssl; gen-ssl-certs.sh /tmp wodby.com test 365"
+run sh -c "apk add --update libressl || apk add --update openssl; gen-ssl-certs.sh /tmp wodby.com test 365"
+
+run sh -c "cd /tmp;
+           curl -fSL https://nginx.org/download/nginx-1.12.2.tar.gz -o nginx.tar.gz;
+           curl -fSL https://nginx.org/download/nginx-1.12.2.tar.gz.asc -o nginx.tar.gz.asc;
+           apk add --update gnupg;
+           export GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8;
+           gpg-verify.sh /tmp/nginx.tar.gz.asc /tmp/nginx.tar.gz"

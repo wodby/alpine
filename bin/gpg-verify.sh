@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [[ -n "${DEBUG}" ]]; then
+    set -x
+fi
+
+signature="${1}"
+file="${2}"
+found="";
+
+declare -a keyservers=(
+    "ha.pool.sks-keyservers.net"
+    "hkp://keyserver.ubuntu.com:80"
+    "hkp://p80.pool.sks-keyservers.net:80"
+    "pgp.mit.edu"
+)
+
+export GNUPGHOME="$(mktemp -d)"
+
+for server in "${keyservers[@]}"; do
+    echo "Fetching GPG key ${GPG_KEYS} from ${server}"
+    gpg --keyserver "$server" --keyserver-options timeout=10 --recv-keys "${GPG_KEYS}" && found="yes" && break
+done;
+
+if [[ -z "${found}" ]]; then
+    echo >&2 "error: failed to fetch GPG key ${GPG_KEYS}"
+    exit 1
+fi
+
+gpg --batch --verify "${signature}" "${file}"
+rm -rf "${GNUPGHOME}" "${signature}"
