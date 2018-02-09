@@ -2,7 +2,7 @@ ARG ALPINE_VER
 
 FROM alpine:${ALPINE_VER}
 
-ENV GOTPL_URL "https://github.com/wodby/gotpl/releases/download/0.1.5/gotpl-alpine-linux-amd64-0.1.5.tar.gz"
+ENV GOTPL_VER 0.1.5
 
 RUN set -xe; \
     \
@@ -15,7 +15,8 @@ RUN set -xe; \
         unzip \
         wget; \
     \
-    wget -qO- ${GOTPL_URL} | tar xz -C /usr/local/bin; \
+    gotpl_url="https://github.com/wodby/gotpl/releases/download/${GOTPL_VER}/gotpl-alpine-linux-amd64-${GOTPL_VER}.tar.gz"; \
+    wget -qO- "${gotpl_url}" | tar xz -C /usr/local/bin; \
     \
     rm -rf /var/cache/apk/*
 
