@@ -20,7 +20,7 @@ build:
 	docker build -t $(REPO):$(TAG) --build-arg ALPINE_VER=$(ALPINE_VER) ./
 
 test:
-	IMAGE=$(REPO):$(TAG) ./tests.sh
+	IMAGE=$(REPO):$(TAG) ./tests
 
 push:
 	docker push $(REPO):$(TAG)
