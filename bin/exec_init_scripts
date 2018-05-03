@@ -7,7 +7,7 @@ if [[ -n "${DEBUG}" ]]; then
 fi
 
 shopt -s nullglob
-for f in /docker-entrypoint-init.d/*; do
+for f in /docker-entrypoint-init.d/*.sh; do
     . "$f"
 done
 shopt -u nullglob
