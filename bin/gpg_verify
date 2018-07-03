@@ -19,12 +19,12 @@ declare -a keyservers=(
 
 export GNUPGHOME="$(mktemp -d)"
 
-IFS=',' read -ra keys <<< "${GPG_KEYS}"
+IFS=';' read -ra keys <<< "${GPG_KEYS}"
 
 for key in "${keys[@]}"; do
     for server in "${keyservers[@]}"; do
         echo "Fetching GPG key ${key} from ${server}"
-        gpg --keyserver "$server" --keyserver-options timeout=10 --recv-keys "${key}" && found="yes" && break
+        gpg --keyserver "$server" --keyserver-options timeout=10 --recv-keys "${key}" && found="yes" && break 2
     done
 done
 
