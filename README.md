@@ -22,8 +22,7 @@ About images:
 
 Supported tags and respective `Dockerfile` links:
 
-* `3.8`, `3`, `latest` [_(Dockerfile)_]
-* `3.7` [_(Dockerfile)_]
+* `3.7`, `3`, `latest` [_(Dockerfile)_]
 * `3.6` [_(Dockerfile)_]
 * `3.5` [_(Dockerfile)_]
 * `3.4` [_(Dockerfile)_]
