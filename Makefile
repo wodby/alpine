@@ -1,7 +1,6 @@
 -include env_make
 
-ALPINE_VER ?= 3.7
-TAG ?= $(ALPINE_VER)
+ALPINE_VER ?= 3.8
 
 REPO = wodby/alpine
 NAME = alpine-$(ALPINE_VER)
@@ -12,12 +11,27 @@ ifneq ($(STABILITY_TAG),)
     endif
 endif
 
+ifeq ($(TAG),)
+    ifneq ($(ALPINE_DEV),)
+    	TAG ?= $(ALPINE_VER)-dev
+    else
+        TAG ?= $(ALPINE_VER)
+    endif
+endif
+
+ifneq ($(ALPINE_DEV),)
+    NAME := $(NAME)-dev
+endif
+
 .PHONY: build test push shell run start stop logs clean release
 
 default: build
 
 build:
-	docker build -t $(REPO):$(TAG) --build-arg ALPINE_VER=$(ALPINE_VER) ./
+	docker build -t $(REPO):$(TAG) \
+		--build-arg ALPINE_VER=$(ALPINE_VER) \
+		--build-arg ALPINE_DEV=$(ALPINE_DEV) \
+		./
 
 test:
 	IMAGE=$(REPO):$(TAG) ./test.sh

@@ -9,7 +9,7 @@ This is a basic alpine image used in Wodby's docker images
 
 ## Docker Images
 
-❗For better reliability we release images with stability tags (`wodby/alpine:3.7-X.X.X`) which correspond to [git tags](https://github.com/wodby/alpine/releases). We strongly recommend using images only with stability tags. 
+❗For better reliability we release images with stability tags (`wodby/alpine:3.8-X.X.X`) which correspond to [git tags](https://github.com/wodby/alpine/releases). We strongly recommend using images only with stability tags. 
 
 About images:
 
@@ -22,7 +22,9 @@ About images:
 
 Supported tags and respective `Dockerfile` links:
 
-* `3.7`, `3`, `latest` [_(Dockerfile)_]
+* `3.8`, `3`, `latest` [_(Dockerfile)_]
+* `3.7` [_(Dockerfile)_]
 * `3.6` [_(Dockerfile)_]
 * `3.5` [_(Dockerfile)_]
 * `3.4` [_(Dockerfile)_]
+* `3.8-dev`, `3-dev`, `dev` [_(Dockerfile)_]
