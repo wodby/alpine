@@ -18,7 +18,7 @@ RUN set -xe; \
         wget; \
     \
     if [ -n "${ALPINE_DEV}" ]; then \
-        apk add --update git gawk coreutils jq grep; \
+        apk add --update git coreutils jq sed gawk grep; \
     fi; \
     \
     gotpl_url="https://github.com/wodby/gotpl/releases/download/${GOTPL_VER}/gotpl-alpine-linux-amd64-${GOTPL_VER}.tar.gz"; \
