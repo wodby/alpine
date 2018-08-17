@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -ex
+
+if [[ -n "${DEBUG}" ]]; then
+    set -x
+fi
+
+artifact="${1}"
+output="${2}"
+found="";
+
+declare -a keyservers=(
+    "ha.pool.sks-keyservers.net"
+    "hkp://keyserver.ubuntu.com:80"
+    "hkp://p80.pool.sks-keyservers.net:80"
+    "pgp.mit.edu"
+)
+
+export GNUPGHOME="$(mktemp -d)"
+
+IFS=';' read -ra keys <<< "${GPG_KEYS}"
+
+for key in "${keys[@]}"; do
+    for server in "${keyservers[@]}"; do
+        echo "Fetching GPG key ${key} from ${server}"
+        gpg --keyserver "$server" --keyserver-options timeout=10 --recv-keys "${key}" && found="yes" && break 2
+    done
+done
+
+if [[ -z "${found}" ]]; then
+    echo >&2 "error: failed to fetch GPG key ${GPG_KEYS}"
+    exit 1
+fi
+
+gpg --batch --decrypt --output "${output}" "${artifact}"; \
+command -v gpgconf && gpgconf --kill all || :; \
+rm -rf "$GNUPGHOME" "${artifact}"; \

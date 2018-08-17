@@ -70,3 +70,10 @@ run sh -c "cd /tmp;
            apk add --update gnupg;
            export GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8;
            gpg_verify /tmp/nginx.tar.gz.asc /tmp/nginx.tar.gz"
+
+run sh -c "cd /tmp;
+           curl -o wp.gpg -fSL https://github.com/wp-cli/wp-cli/releases/download/v2.0.0/wp-cli-2.0.0.phar.gpg; \
+           apk add --update gnupg;
+           export GPG_KEYS=63AF7AA15067C05616FDDD88A3A2E8F226F0BC06;
+           gpg_decrypt /tmp/wp.gpg /tmp/wp
+           [ -f /tmp/wp ]"
