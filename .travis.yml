@@ -1,19 +1,20 @@
 language: bash
 
 services:
-  - docker
+- docker
 
 env:
   matrix:
-    - ALPINE_VER=3.9.4 TAGS=3.9,3,latest
-    - ALPINE_VER=3.8.4 TAGS=3.8
-    - ALPINE_VER=3.9.4 TAGS=3.9-dev,3-dev,dev ALPINE_DEV=1
+  - ALPINE_VER=3.10.0 TAGS=3.10,3,latest
+  - ALPINE_VER=3.9.4 TAGS=3.9
+  - ALPINE_VER=3.8.4 TAGS=3.8
+  - ALPINE_VER=3.10.0 TAGS=3.10-dev,3-dev,dev ALPINE_DEV=1
 
 script:
-  - make && make test
+- make && make test
 
 after_success:
-  - . "${TRAVIS_BUILD_DIR}/release.sh"
+- . "${TRAVIS_BUILD_DIR}/release.sh"
 
 notifications:
   email:
