@@ -26,7 +26,7 @@ Supported tags and respective `Dockerfile` links:
 * `3.10` [_(Dockerfile)_]
 * `3.9` [_(Dockerfile)_]
 * `3.8` [_(Dockerfile)_]
-* `3.10-dev`, `3-dev`, `dev` [_(Dockerfile)_]
+* `3.11-dev`, `3-dev`, `dev` [_(Dockerfile)_]
 
 ## Scripts
 

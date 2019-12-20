@@ -62,7 +62,7 @@ run sh -c "apk add --update openssh-keygen || apk add --update openssh-client;
            gen_ssh_keys && rm /etc/ssh/ssh_rsa_key*;
            gen_ssh_keys 'rsa dsa ecdsa ed25519'"
 
-run sh -c "apk add --update libressl || apk add --update openssl; gen_ssl_certs /tmp wodby.com test 365"
+run sh -c "apk add --update openssl; gen_ssl_certs /tmp wodby.com test 365"
 
 run sh -c "cd /tmp;
            curl -fSL https://nginx.org/download/nginx-1.12.2.tar.gz -o nginx.tar.gz;
