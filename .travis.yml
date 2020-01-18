@@ -5,11 +5,11 @@ services:
 
 env:
   matrix:
-  - ALPINE_VER=3.11.2 TAGS=3.11,3,latest
+  - ALPINE_VER=3.11.3 TAGS=3.11,3,latest
   - ALPINE_VER=3.10.3 TAGS=3.10
   - ALPINE_VER=3.9.4 TAGS=3.9
   - ALPINE_VER=3.8.4 TAGS=3.8
-  - ALPINE_VER=3.11.2 TAGS=3.11-dev,3-dev,dev ALPINE_DEV=1
+  - ALPINE_VER=3.11.3 TAGS=3.11-dev,3-dev,dev ALPINE_DEV=1
 
 script:
 - make && make test
