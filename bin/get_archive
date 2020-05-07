@@ -52,7 +52,7 @@ fi
 mkdir -p "${tmp_dest}"
 
 if [[ "${source}" =~ ^https?:// ]]; then
-    wget -q -P "${tmp_dest}" "${source}"
+    wget -q -P --content-disposition "${tmp_dest}" "${source}"
 else
     mv "${source}" "${tmp_dest}"
 fi
