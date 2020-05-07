@@ -13,7 +13,7 @@ This is a basic alpine image used in Wodby's docker images
 
 About images:
 
-* All images are based on Alpine Linux
+* All images based on Alpine Linux
 * Base image: [alpine](https://hub.docker.com/r/_/alpine)
 * [Travis CI builds](https://travis-ci.org/wodby/alpine) 
 * [Docker Hub](https://hub.docker.com/r/wodby/alpine) 
