@@ -11,7 +11,7 @@ on:
   pull_request:
 
 jobs:
-  alpine-3.12:
+  alpine-3_12:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
         tags: 3.12,3,latest
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-  alpine-3.11:
+  alpine-3_11:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -31,7 +31,7 @@ jobs:
         tags: 3.11
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-  alpine-3.10:
+  alpine-3_10:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -41,7 +41,7 @@ jobs:
         tags: 3.10
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-  alpine-3.9:
+  alpine-3_9:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -51,7 +51,7 @@ jobs:
         tags: 3.9
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-  alpine-3.8:
+  alpine-3_8:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -61,7 +61,7 @@ jobs:
         tags: 3.8
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-  alpine-3.12-dev:
+  alpine-3_12-dev:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
