@@ -1,0 +1,23 @@
+name: Release image
+description: Release docker image
+inputs:
+  tags:
+    description: image tags
+    required: true
+  username:
+    description: docker username
+    required: true
+  password:
+    description: docker password
+    required: true
+runs:
+  using: "composite"
+  steps:
+  - name: Release
+    env:
+      DOCKER_USERNAME: ${{ inputs.username }}
+      DOCKER_PASSWORD: ${{ inputs.password }}
+      TAGS: ${{ inputs.tags }}
+    run: $GITHUB_ACTION_PATH/release.sh
+    working-directory: ${{ inputs.workdir }}
+    shell: bash
