@@ -1,6 +1,12 @@
-name: Release image
-description: Release docker image
+name: Build
+description: Build Alpine image
 inputs:
+  version:
+    description: alpine version
+    required: true
+  dev:
+    description: dev version of image
+    required: false
   tags:
     description: image tags
     required: true
@@ -10,17 +16,20 @@ inputs:
   password:
     description: docker password
     required: true
-  workdir:
-    description: working directory
-    required: false
 runs:
   using: "composite"
   steps:
-  - name: Release
+  - name: Build image
     env:
+      ALPINE_VER: ${{ inputs.version }}
+      ALPINE_DEV: ${{ inputs.dev }}
       DOCKER_USERNAME: ${{ inputs.username }}
       DOCKER_PASSWORD: ${{ inputs.password }}
       TAGS: ${{ inputs.tags }}
-    run: $GITHUB_ACTION_PATH/release.sh
-    working-directory: ${{ inputs.workdir }}
+    run: |
+      set -e
+      make
+      make test
+      . $GITHUB_ACTION_PATH/release.sh
     shell: bash
+    working-directory: ${{ inputs.workdir }}
