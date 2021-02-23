@@ -21,7 +21,7 @@ RUN set -xe; \
         apk add --update git coreutils jq sed gawk grep gnupg; \
     fi; \
     \
-    dockerplatform=${BUILDPLATFORM:-linux/amd64};\
+    dockerplatform=${BUILDPLATFORM};\
     gotpl_url="https://github.com/wodby/gotpl/releases/download/0.3.0/gotpl-${dockerplatform/\//-}.tar.gz"; \
     wget -qO- "${gotpl_url}" | tar xz --no-same-owner -C /usr/local/bin; \
     \
