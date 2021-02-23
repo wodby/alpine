@@ -22,6 +22,7 @@ runs:
       ALPINE_VER: ${{ inputs.version }}
       ALPINE_DEV: ${{ inputs.dev }}
       TAGS: ${{ inputs.tags }}
+      PLATFORM: ${{ inputs.platform }}
     run: |
       set -e
       make buildx-build-amd64
