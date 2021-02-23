@@ -10,12 +10,10 @@ inputs:
   tags:
     description: image tags
     required: true
-  username:
-    description: docker username
-    required: true
-  password:
-    description: docker password
-    required: true
+  platform:
+    description: docker platform
+    required: false
+    default: linux/amd64
 runs:
   using: "composite"
   steps:
@@ -23,12 +21,11 @@ runs:
     env:
       ALPINE_VER: ${{ inputs.version }}
       ALPINE_DEV: ${{ inputs.dev }}
-      DOCKER_USERNAME: ${{ inputs.username }}
-      DOCKER_PASSWORD: ${{ inputs.password }}
       TAGS: ${{ inputs.tags }}
     run: |
       set -e
-      make
+      make buildx-build-amd64
       make test
+      make buildx-build
       . $GITHUB_ACTION_PATH/release.sh
     shell: bash
