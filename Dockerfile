@@ -4,7 +4,7 @@ FROM alpine:${ALPINE_VER}
 
 ARG ALPINE_DEV
 
-ARG BUILDPLATFORM
+ARG TARGETPLATFORM
 
 RUN set -xe; \
     \
@@ -21,8 +21,8 @@ RUN set -xe; \
         apk add --update git coreutils jq sed gawk grep gnupg; \
     fi; \
     \
-    dockerplatform=${BUILDPLATFORM};\
-    gotpl_url="https://github.com/wodby/gotpl/releases/download/0.3.0/gotpl-${dockerplatform/\//-}.tar.gz"; \
+    dockerplatform=${TARGETPLATFORM:-linux/amd64};\
+    gotpl_url="https://github.com/wodby/gotpl/releases/download/0.3.0/gotpl-${TARGETPLATFORM/\//-}.tar.gz"; \
     wget -O- "${gotpl_url}" | tar xz --no-same-owner -C /usr/local/bin; \
     \
     rm -rf /var/cache/apk/*
