@@ -33,6 +33,6 @@ if [[ -z "${found}" ]]; then
     exit 1
 fi
 
-gpg --batch --decrypt --output "${output}" "${artifact}"; \
-command -v gpgconf && gpgconf --kill all || :; \
-rm -rf "$GNUPGHOME" "${artifact}"; \
+gpg --batch --decrypt --output "${output}" "${artifact}"
+gpgconf --kill all || :
+rm -rf "$GNUPGHOME" "${artifact}"

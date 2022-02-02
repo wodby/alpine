@@ -3,7 +3,6 @@
 [![Build Status](https://github.com/wodby/alpine/workflows/Build%20docker%20image/badge.svg)](https://github.com/wodby/alpine/actions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/alpine.svg)](https://hub.docker.com/r/wodby/alpine)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/alpine.svg)](https://hub.docker.com/r/wodby/alpine)
-[![Docker Layers](https://images.microbadger.com/badges/image/wodby/alpine.svg)](https://microbadger.com/images/wodby/alpine)
 
 This is a basic alpine image used in Wodby's docker images
 

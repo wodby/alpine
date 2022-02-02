@@ -34,4 +34,5 @@ if [[ -z "${found}" ]]; then
 fi
 
 gpg --batch --verify "${signature}" "${file}"
+gpgconf --kill all || :
 rm -rf "${GNUPGHOME}" "${signature}"
