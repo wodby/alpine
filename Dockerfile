@@ -18,7 +18,7 @@ RUN set -xe; \
         wget; \
     \
     if [ -n "${ALPINE_DEV}" ]; then \
-        apk add --update git coreutils jq sed gawk grep gnupg; \
+        apk add --update git coreutils jq sed gawk grep gnupg python3; \
     fi; \
     \
     dockerplatform=${TARGETPLATFORM:-linux/amd64};\
