@@ -63,7 +63,7 @@ regex="\.(${regex// /|})$"
 
 if [[ "${archive}" =~ ${regex} ]]; then
     if [[ "${archive}" =~ \.zip$ ]]; then
-        unzip -qq "${archive}" -x "__MACOSX/*" -d "${tmp_dest}"
+        7z x -o"${tmp_dest}" "${archive}"
         rm "${archive}"
     elif [[ "${archive}" =~ \.tgz$ ]] || [[ "${archive}" =~ \.tar.gz$ ]]; then
         _untar "${archive}" "${tmp_dest}" 1

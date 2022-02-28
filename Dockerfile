@@ -13,6 +13,7 @@ RUN set -xe; \
         ca-certificates \
         curl \
         gzip \
+        p7zip \
         tar \
         unzip \
         wget; \
