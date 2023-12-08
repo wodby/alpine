@@ -1,6 +1,6 @@
 -include env_make
 
-ALPINE_VER ?= 3.18.5
+ALPINE_VER ?= 3.19.0
 
 REPO = wodby/alpine
 NAME = alpine-$(ALPINE_VER)
