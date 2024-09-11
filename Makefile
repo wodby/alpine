@@ -1,6 +1,7 @@
 -include env_make
 
 ALPINE_VER ?= 3.20.3
+ALPINE_VER_MINOR = $(shell echo "${ALPINE_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
 REPO = wodby/alpine
 NAME = alpine-$(ALPINE_VER)
@@ -12,6 +13,8 @@ ifneq ($(STABILITY_TAG),)
         override TAG := $(TAG)-$(STABILITY_TAG)
     endif
 endif
+
+TAG ?= $(ALPINE_VER_MINOR)
 
 ifeq ($(TAG),)
     ifneq ($(ALPINE_DEV),)

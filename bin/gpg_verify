@@ -13,6 +13,7 @@ found="";
 declare -a keyservers=(
     "ha.pool.sks-keyservers.net"
     "hkp://keyserver.ubuntu.com:80"
+    "keyserver.ubuntu.com"
     "hkp://p80.pool.sks-keyservers.net:80"
     "pgp.mit.edu"
 )
