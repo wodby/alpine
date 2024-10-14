@@ -23,7 +23,7 @@ RUN set -xe; \
     fi; \
     \
     dockerplatform=${TARGETPLATFORM:-linux/amd64};\
-    gotpl_url="https://github.com/wodby/gotpl/releases/download/0.3.3/gotpl-${TARGETPLATFORM/\//-}.tar.gz"; \
+    gotpl_url="https://github.com/wodby/gotpl/releases/download/0.4.0/gotpl-${TARGETPLATFORM/\//-}.tar.gz"; \
     wget -O- "${gotpl_url}" | tar xz --no-same-owner -C /usr/local/bin; \
     \
     rm -rf /var/cache/apk/*
