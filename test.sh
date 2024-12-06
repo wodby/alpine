@@ -60,7 +60,7 @@ run sh -c '[[ $(compare_semver "3.3.6" "3.3.6" "=") == 0 ]];'
 
 run sh -c "apk add --update openssh-keygen || apk add --update openssh-client;
            gen_ssh_keys && rm /etc/ssh/ssh_rsa_key*;
-           gen_ssh_keys 'rsa dsa ecdsa ed25519'"
+           gen_ssh_keys 'rsa ecdsa ed25519'"
 
 run sh -c "apk add --update openssl; gen_ssl_certs /tmp wodby.com test 365"
 

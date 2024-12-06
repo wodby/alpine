@@ -6,7 +6,7 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
-# Key types, e.g. "rsa dsa ecdsa ed25519":
+# Key types, e.g. "rsa ecdsa ed25519":
 IFS=' ' read -r -a types <<< "${1:-rsa}"
 
 dir="${2:-/etc/ssh}"
