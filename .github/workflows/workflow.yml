@@ -25,7 +25,7 @@ jobs:
       - uses: docker/setup-buildx-action@v3
       - uses: ./.github/actions
         with:
-          version: '3.21.0'
+          version: '3.21.1'
           tags: 3.21,3,latest
           platform: linux/amd64,linux/arm64
   alpine-3_20:
@@ -78,7 +78,7 @@ jobs:
     - uses: docker/setup-buildx-action@v3
     - uses: ./.github/actions
       with:
-        version: '3.21.0'
+        version: '3.21.1'
         tags: 3.21-dev,3-dev,dev
         dev: 1
         platform: linux/amd64,linux/arm64
