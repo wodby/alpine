@@ -26,7 +26,7 @@ jobs:
       - uses: ./.github/actions
         with:
           version: '3.21.2'
-          tags: 3.21,3,latest
+          tags: '3.21,3,latest'
           platform: linux/amd64,linux/arm64
   alpine-3_20:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
     - uses: ./.github/actions
       with:
         version: '3.20.5'
-        tags: 3.20
+        tags: '3.20'
         platform: linux/amd64,linux/arm64
   alpine-3_19:
     runs-on: ubuntu-latest
@@ -52,7 +52,7 @@ jobs:
     - uses: ./.github/actions
       with:
         version: '3.19.6'
-        tags: 3.19
+        tags: '3.19'
         platform: linux/amd64,linux/arm64
   alpine-3_18:
     runs-on: ubuntu-latest
@@ -65,7 +65,7 @@ jobs:
     - uses: ./.github/actions
       with:
         version: '3.18.11'
-        tags: 3.18
+        tags: '3.18'
         platform: linux/amd64,linux/arm64
   # dev variants
   alpine-dev:
@@ -79,6 +79,6 @@ jobs:
     - uses: ./.github/actions
       with:
         version: '3.21.2'
-        tags: 3.21-dev,3-dev,dev
+        tags: '3.21-dev,3-dev,dev'
         dev: 1
         platform: linux/amd64,linux/arm64
