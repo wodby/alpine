@@ -51,7 +51,7 @@ jobs:
     - uses: docker/setup-buildx-action@v3
     - uses: ./.github/actions
       with:
-        version: '3.19.6'
+        version: '3.19.7'
         tags: '3.19'
         platform: linux/amd64,linux/arm64
   alpine-3_18:
