@@ -21,10 +21,11 @@ About images:
 
 Supported tags and respective `Dockerfile` links:
 
-* `3.21`, `3`, `latest` [_(Dockerfile)_]
+* `3.22`, `3`, `latest` [_(Dockerfile)_]
+* `3.21` [_(Dockerfile)_]
 * `3.20` [_(Dockerfile)_]
 * `3.19` [_(Dockerfile)_]
-* `3.21-dev`, `3-dev`, `dev` [_(Dockerfile)_]
+* `3.22-dev`, `3-dev`, `dev` [_(Dockerfile)_]
 
 All images built for `linux/amd64` and `linux/arm64`
 
