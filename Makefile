@@ -1,6 +1,6 @@
 -include env_make
 
-ALPINE_VER ?= 3.22.1
+ALPINE_VER ?= 3.22.2
 ALPINE_VER_MINOR = $(shell echo "${ALPINE_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
 REPO = wodby/alpine
