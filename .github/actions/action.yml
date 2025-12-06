@@ -1,32 +1,27 @@
-name: Build
-description: Build Alpine image
+name: push
+description: combine multi-arch image and push
 inputs:
   version:
-    description: alpine version
+    description: version
     required: true
+  latest:
+    description: if tag latest
+    required: false
+  latest_major:
+    description: if tag latest major version
+    required: false
   dev:
-    description: dev version of image
+    description: if dev version
     required: false
-  tags:
-    description: image tags
-    required: true
-  platform:
-    description: docker platform
-    required: false
-    default: linux/amd64
 runs:
   using: "composite"
   steps:
-  - name: Build image
-    env:
-      ALPINE_VER: ${{ inputs.version }}
-      ALPINE_DEV: ${{ inputs.dev }}
-      TAGS: ${{ inputs.tags }}
-      PLATFORM: ${{ inputs.platform }}
-    run: |
-      set -e
-      make buildx-build-amd64
-      make test
-      make buildx-build
-      . $GITHUB_ACTION_PATH/release.sh
-    shell: bash
+    - name: Build image
+      env:
+        ALPINE_VER: ${{ inputs.version }}
+        LATEST: ${{ inputs.latest }}
+        LATEST_MAJOR: ${{ inputs.latest_major }}
+        DEV: ${{ inputs.dev }}
+      run: |
+        . $GITHUB_ACTION_PATH/release.sh
+      shell: bash
