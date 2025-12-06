@@ -56,6 +56,7 @@ jobs:
       - name: build and push
         env:
           ALPINE_VER: ${{ matrix.alpine.version }}
+          ALPINE_DEV: ${{ matrix.alpine.dev }}
           ARCH: ${{ matrix.arch }}
         run: |
           make
