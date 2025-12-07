@@ -50,8 +50,8 @@ buildx-push:
 
 buildx-imagetools-create:
 	docker buildx imagetools create -t $(REPO):$(IMAGETOOLS_TAG) \
-				$(REPO):$(ALPINE_VER_MINOR)-amd64 \
-				$(REPO):$(ALPINE_VER_MINOR)-arm64
+				$(REPO):$(TAG)-amd64 \
+				$(REPO):$(TAG)-arm64
 .PHONY: buildx-imagetools-create
 
 test:
