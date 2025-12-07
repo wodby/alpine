@@ -22,11 +22,11 @@ ifneq ($(ALPINE_DEV),)
     NAME := $(NAME)-dev
 endif
 
+IMAGETOOLS_TAG ?= $(TAG)
+
 ifneq ($(ARCH),)
 	override TAG := $(TAG)-$(ARCH)
 endif
-
-IMAGETOOLS_TAG ?= $(TAG)
 
 .PHONY: build buildx-build buildx-push test push shell run start stop logs clean release
 
