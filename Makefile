@@ -4,17 +4,15 @@ ALPINE_VER ?= 3.23.0
 ALPINE_VER_MINOR = $(shell echo "${ALPINE_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
 REPO = wodby/alpine
-NAME = alpine-$(ALPINE_VER)
+NAME = alpine-$(ALPINE_VER_MINOR)
 
 PLATFORM ?= linux/amd64
 
-TAG ?= $(ALPINE_VER_MINOR)
-
 ifeq ($(TAG),)
     ifneq ($(ALPINE_DEV),)
-    	TAG ?= $(ALPINE_VER)-dev
+    	TAG ?= $(ALPINE_VER_MINOR)-dev
     else
-        TAG ?= $(ALPINE_VER)
+        TAG ?= $(ALPINE_VER_MINOR)
     endif
 endif
 
