@@ -26,6 +26,8 @@ ifneq ($(ARCH),)
 	override TAG := $(TAG)-$(ARCH)
 endif
 
+IMAGETOOLS_TAG ?= $(TAG)
+
 .PHONY: build buildx-build buildx-push test push shell run start stop logs clean release
 
 default: build
@@ -49,9 +51,9 @@ buildx-push:
 		./
 
 buildx-imagetools-create:
-	docker buildx imagetools create -t $(REPO):$(TAG) \
-				$(REPO):$(ALPINE_VER_MINOR)-amd64 \
-				$(REPO):$(ALPINE_VER_MINOR)-arm64
+	docker buildx imagetools create -t $(REPO):$(IMAGETOOLS_TAG) \
+				$(REPO):$(TAG)-amd64 \
+				$(REPO):$(TAG)-arm64
 .PHONY: buildx-imagetools-create
 
 test:
