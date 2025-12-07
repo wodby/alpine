@@ -7,12 +7,12 @@ if [[ "${GITHUB_REF}" == refs/heads/master || "${GITHUB_REF}" == refs/tags/* ]];
   major_ver="${minor_ver%.*}"
 
   tags=("${minor_ver}")
-  if [[ -n "${DEV}" ]]; then
+  if [[ -n "${ALPINE_DEV}" ]]; then
     tags=("${minor_ver}-dev")
   fi
 
   if [[ -n "${LATEST_MAJOR}" ]]; then
-    if [[ -n "${DEV}" ]]; then
+    if [[ -n "${ALPINE_DEV}" ]]; then
       tags+=("${major_ver}-dev")
     else 
       tags+=("${major_ver}")
@@ -22,12 +22,12 @@ if [[ "${GITHUB_REF}" == refs/heads/master || "${GITHUB_REF}" == refs/tags/* ]];
   if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
     stability_tag="${GITHUB_REF##*/}"
     tags=("${minor_ver}-${stability_tag}")
-    if [[ -n "${DEV}" ]]; then
+    if [[ -n "${ALPINE_DEV}" ]]; then
       tags=("${minor_ver}-dev-${stability_tag}")
     fi
     
     if [[ -n "${LATEST_MAJOR}" ]]; then
-      if [[ -n "${DEV}" ]]; then
+      if [[ -n "${ALPINE_DEV}" ]]; then
         tags+=("${major_ver}-dev-${stability_tag}")
       else 
         tags+=("${major_ver}-${stability_tag}")
@@ -35,7 +35,7 @@ if [[ "${GITHUB_REF}" == refs/heads/master || "${GITHUB_REF}" == refs/tags/* ]];
     fi
   else
     if [[ -n "${LATEST}" ]]; then
-      if [[ -n "${DEV}" ]]; then
+      if [[ -n "${ALPINE_DEV}" ]]; then
         tags+=("dev")
       else
         tags+=("latest")
