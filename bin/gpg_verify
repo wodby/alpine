@@ -8,30 +8,34 @@ fi
 
 signature="${1}"
 file="${2}"
-found="";
-
-declare -a keyservers=(
-    "ha.pool.sks-keyservers.net"
-    "hkp://keyserver.ubuntu.com:80"
-    "keyserver.ubuntu.com"
-    "hkp://p80.pool.sks-keyservers.net:80"
-    "pgp.mit.edu"
-)
+keyfile="${3}"
 
 export GNUPGHOME="$(mktemp -d)"
 
-IFS=';' read -ra keys <<< "${GPG_KEYS}"
+if [[ -f "${keyfile}" ]]; then
+  echo "Importing keys from ${keyfile}"
+  gpg --import "${keyfile}"
+else
+  found=""
+  declare -a keyservers=(
+    "hkp://keyserver.ubuntu.com:80"
+    "keyserver.ubuntu.com"
+    "pgp.mit.edu"
+  )
 
-for key in "${keys[@]}"; do
+  IFS=';' read -ra keys <<< "${GPG_KEYS}"
+
+  for key in "${keys[@]}"; do
     for server in "${keyservers[@]}"; do
-        echo "Fetching GPG key ${key} from ${server}"
-        gpg --keyserver "$server" --keyserver-options timeout=10 --recv-keys "${key}" && found="yes" && break 2  || echo "Trying new server..."
+      echo "Fetching GPG key ${key} from ${server}"
+      gpg --keyserver "$server" --keyserver-options timeout=10 --recv-keys "${key}" && found="yes" && break 2  || echo "Trying new server..."
     done
-done
+  done
 
-if [[ -z "${found}" ]]; then
+  if [[ -z "${found}" ]]; then
     echo >&2 "error: failed to fetch GPG key ${GPG_KEYS}"
     exit 1
+  fi
 fi
 
 gpg --batch --verify "${signature}" "${file}"
