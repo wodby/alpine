@@ -11,11 +11,11 @@ file="${2}"
 found="";
 
 declare -a keyservers=(
-    "ha.pool.sks-keyservers.net"
     "hkp://keyserver.ubuntu.com:80"
     "keyserver.ubuntu.com"
-    "hkp://p80.pool.sks-keyservers.net:80"
+    "keys.openpgp.org"
     "pgp.mit.edu"
+    "ha.pool.sks-keyservers.net"
 )
 
 export GNUPGHOME="$(mktemp -d)"
