@@ -9,7 +9,7 @@ on:
   pull_request:
 
 env:
-  ALPINE323: '3.23.2'
+  ALPINE323: '3.23.3'
   ALPINE322: '3.22.2'
   ALPINE321: '3.21.5'
   ALPINE320: '3.20.8'
