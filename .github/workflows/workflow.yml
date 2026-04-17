@@ -11,7 +11,7 @@ on:
 env:
   ALPINE323: '3.23.4'
   ALPINE322: '3.22.4'
-  ALPINE321: '3.21.6'
+  ALPINE321: '3.21.7'
   ALPINE320: '3.20.9'
 
 jobs:
