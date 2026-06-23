@@ -10,7 +10,7 @@ on:
 
 env:
   ALPINE324: '3.24.1'
-  ALPINE323: '3.23.4'
+  ALPINE323: '3.23.5'
   ALPINE322: '3.22.4'
   ALPINE321: '3.21.7'
 
