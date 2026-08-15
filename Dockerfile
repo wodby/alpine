@@ -5,6 +5,7 @@ FROM alpine:${ALPINE_VER}
 ARG ALPINE_DEV
 
 ARG TARGETPLATFORM
+ARG GOTPL_VERSION=0.6.7
 
 RUN set -xe; \
     \
@@ -23,7 +24,7 @@ RUN set -xe; \
     fi; \
     \
     dockerplatform=${TARGETPLATFORM:-linux/amd64};\
-    gotpl_url="https://github.com/wodby/gotpl/releases/latest/download/gotpl-${TARGETPLATFORM/\//-}.tar.gz"; \
+    gotpl_url="https://github.com/wodby/gotpl/releases/download/${GOTPL_VERSION}/gotpl-${dockerplatform/\//-}.tar.gz"; \
     wget -O- "${gotpl_url}" | tar xz --no-same-owner -C /usr/local/bin; \
     \
     rm -rf /var/cache/apk/*
