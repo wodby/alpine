@@ -7,7 +7,9 @@ ARG ALPINE_DEV
 ARG TARGETPLATFORM
 ARG GOTPL_VERSION=0.6.9
 
+# Upgrade inherited packages even when their existing versions satisfy dependencies.
 RUN set -xe; \
+    apk upgrade --no-cache; \
     \
     apk add --update --no-cache \
         bash \
