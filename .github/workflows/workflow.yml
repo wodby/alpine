@@ -7,6 +7,9 @@ on:
     tags:
       - '*'
   pull_request:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
 
 env:
   ALPINE324: '3.24.1'
@@ -19,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       alpine-versions: ${{ steps.set-matrix.outputs.alpine-versions }}
+      stability-tag: ${{ steps.stability.outputs.tag }}
     steps:
       - id: set-matrix
         run: |
@@ -32,10 +36,23 @@ jobs:
           ]
           EOF
           echo "alpine-versions=$(jq -c . versions.json)" >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v6
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        with:
+          fetch-depth: 0
+      - name: Select current stability tag
+        id: stability
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          tag=$(git tag --sort=-version:refname | sed -nE '/^[0-9]+\.[0-9]+\.[0-9]+$/ {p;q;}')
+          test -n "$tag"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
 
   build:
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     needs: setup
     strategy:
+      fail-fast: false
       matrix:
         alpine: ${{ fromJson(needs.setup.outputs.alpine-versions) }}
         arch:
@@ -50,6 +67,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Build and test
+        id: build-image
         env:
           ALPINE_VER: ${{ matrix.alpine.version }}
           ALPINE_DEV: ${{ matrix.alpine.dev }}
@@ -57,6 +75,14 @@ jobs:
         run: |
           make
           make test
+          echo "image=$(make --no-print-directory -s image-ref)" >> "$GITHUB_OUTPUT"
+      - name: Scan image
+        if: github.event_name == 'push'
+        uses: ./.github/actions/scout
+        with:
+          image: local://${{ steps.build-image.outputs.image }}
+          dockerhub-user: ${{ secrets.DOCKER_USERNAME }}
+          dockerhub-password: ${{ secrets.DOCKER_PASSWORD }}
       - uses: docker/login-action@v3
         if: github.event_name == 'push'
         with:
@@ -91,3 +117,37 @@ jobs:
           latest: ${{ matrix.alpine.latest }}
           latest_major: ${{ matrix.alpine.latest_major }}
           dev: ${{ matrix.alpine.dev }}
+
+  scan-published:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    needs: setup
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        alpine: ${{ fromJson(needs.setup.outputs.alpine-versions) }}
+        arch: [amd64, arm64]
+        stability: ['', '${{ needs.setup.outputs.stability-tag }}']
+    steps:
+      - uses: actions/checkout@v6
+      - name: Select published image
+        id: image
+        env:
+          ALPINE_VER: ${{ matrix.alpine.version }}
+          ALPINE_DEV: ${{ matrix.alpine.dev }}
+          STABILITY: ${{ matrix.stability }}
+        run: |
+          image=$(make --no-print-directory -s image-ref)
+          if [[ -n "$STABILITY" ]]; then
+            image="$image-$STABILITY"
+          fi
+          echo "image=$image" >> "$GITHUB_OUTPUT"
+      - name: Scan published image
+        uses: ./.github/actions/scout
+        with:
+          image: registry://${{ steps.image.outputs.image }}
+          platform: linux/${{ matrix.arch }}
+          dockerhub-user: ${{ secrets.DOCKER_USERNAME }}
+          dockerhub-password: ${{ secrets.DOCKER_PASSWORD }}
