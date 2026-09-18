@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 env:
-  ALPINE324: '3.24.1'
+  ALPINE324: '3.24.2'
   ALPINE323: '3.23.5'
   ALPINE322: '3.22.5'
   ALPINE321: '3.21.7'
