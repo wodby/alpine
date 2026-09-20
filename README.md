@@ -9,7 +9,7 @@ This is a basic alpine image used in Wodby's docker images
 ## Docker Images
 
 Use image revision tags such as `wodby/alpine:3.24-rN` to select a Wodby image revision.
-Major and minor tags use the repository release number. Full-version tags such as
+Major and minor tags use the repository release number, starting at `r0`. Full-version tags such as
 `wodby/alpine:3.24.2-r0` start at `r0` for each exact upstream version.
 Every published versioned revision tag has a matching annotated Git tag pointing to its release commit.
 Existing tags remain available after support for their major or minor version ends.
