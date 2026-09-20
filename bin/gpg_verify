@@ -36,4 +36,6 @@ fi
 
 gpg --batch --verify "${signature}" "${file}"
 gpgconf --kill all || :
-rm -rf "${GNUPGHOME}" "${signature}"
+# Daemons may remove their sockets while rm walks the temporary keyring.
+rm -rf "${GNUPGHOME}" "${signature}" 2>/dev/null || \
+    rm -rf "${GNUPGHOME}" "${signature}"
