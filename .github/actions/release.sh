@@ -20,17 +20,17 @@ if [[ "${GITHUB_REF}" == refs/heads/master || "${GITHUB_REF}" == refs/tags/* ]];
   fi  
   
   if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
-    stability_tag="${GITHUB_REF##*/}"
-    tags=("${minor_ver}-${stability_tag}")
+    image_revision="${GITHUB_REF##*/}"
+    tags=("${minor_ver}-${image_revision}")
     if [[ -n "${ALPINE_DEV}" ]]; then
-      tags=("${minor_ver}-dev-${stability_tag}")
+      tags=("${minor_ver}-dev-${image_revision}")
     fi
     
     if [[ -n "${LATEST_MAJOR}" ]]; then
       if [[ -n "${ALPINE_DEV}" ]]; then
-        tags+=("${major_ver}-dev-${stability_tag}")
+        tags+=("${major_ver}-dev-${image_revision}")
       else 
-        tags+=("${major_ver}-${stability_tag}")
+        tags+=("${major_ver}-${image_revision}")
       fi
     fi
   else
