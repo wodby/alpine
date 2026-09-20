@@ -35,4 +35,6 @@ fi
 
 gpg --batch --decrypt --output "${output}" "${artifact}"
 gpgconf --kill all || :
-rm -rf "$GNUPGHOME" "${artifact}"
+# Daemons may remove their sockets while rm walks the temporary keyring.
+rm -rf "${GNUPGHOME}" "${artifact}" 2>/dev/null || \
+    rm -rf "${GNUPGHOME}" "${artifact}"

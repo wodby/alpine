@@ -77,6 +77,7 @@ jobs:
           ALPINE_DEV: ${{ matrix.alpine.dev }}
           ARCH: ${{ matrix.arch }}
         run: |
+          bash tests/gpg-cleanup.sh
           make
           make test
           echo "image=$(make --no-print-directory -s image-ref)" >> "$GITHUB_OUTPUT"
