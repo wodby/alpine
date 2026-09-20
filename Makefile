@@ -7,6 +7,7 @@ REPO = wodby/alpine
 NAME = alpine-$(ALPINE_VER_MINOR)
 
 PLATFORM ?= linux/amd64
+SOURCE_COMMIT ?= $(shell git rev-parse HEAD)
 
 ifeq ($(TAG),)
     ifneq ($(ALPINE_DEV),)
@@ -22,6 +23,11 @@ endif
 
 IMAGETOOLS_TAG ?= $(TAG)
 
+# Isolate architecture staging tags across daily builds and release workflows.
+ifneq ($(CI_BUILD_ID),)
+    override TAG := $(TAG)-build-$(CI_BUILD_ID)
+endif
+
 ifneq ($(ARCH),)
 	override TAG := $(TAG)-$(ARCH)
 endif
@@ -35,19 +41,19 @@ BASE_IMAGE_TAG = $(ALPINE_VER)
 default: build
 
 build:
-	docker build --build-arg BASE_IMAGE="$(BASE_IMAGE)" -t $(REPO):$(TAG) \
+	docker build --build-arg BASE_IMAGE="$(BASE_IMAGE)" --build-arg SOURCE_COMMIT="$(SOURCE_COMMIT)" -t $(REPO):$(TAG) \
 		--build-arg ALPINE_VER=$(ALPINE_VER) \
 		--build-arg ALPINE_DEV=$(ALPINE_DEV) \
 		./
 
 buildx-build:
-	docker buildx build --build-arg BASE_IMAGE="$(BASE_IMAGE)" --platform $(PLATFORM) -t $(REPO):$(TAG) \
+	docker buildx build --build-arg BASE_IMAGE="$(BASE_IMAGE)" --build-arg SOURCE_COMMIT="$(SOURCE_COMMIT)" --platform $(PLATFORM) -t $(REPO):$(TAG) \
 		--build-arg ALPINE_VER=$(ALPINE_VER) \
 		--build-arg ALPINE_DEV=$(ALPINE_DEV) \
 		./
 
 buildx-push:
-	docker buildx build --build-arg BASE_IMAGE="$(BASE_IMAGE)" --platform $(PLATFORM) --push -t $(REPO):$(TAG) \
+	docker buildx build --build-arg BASE_IMAGE="$(BASE_IMAGE)" --build-arg SOURCE_COMMIT="$(SOURCE_COMMIT)" --platform $(PLATFORM) --push -t $(REPO):$(TAG) \
 		--build-arg ALPINE_VER=$(ALPINE_VER) \
 		--build-arg ALPINE_DEV=$(ALPINE_DEV) \
 		./

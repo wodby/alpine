@@ -59,3 +59,11 @@ image. A version without a pin fails before the build starts.
 When adding a supported base version or variant, add its image index digest to
 `base-images.mk`. For a custom build, override `BASE_IMAGE` with a complete
 `repository:tag@sha256:...` reference.
+
+## Security updates
+
+The supported images are rebuilt and tested daily to pick up Alpine package fixes.
+When package upgrades resolve known CVEs since the last image revision, a new
+revision is released with the affected packages, versions and CVEs in its Git tag
+notes. Digest changes alone do not create a revision. Revision builds verify that
+the advertised fixes are present before publishing.
