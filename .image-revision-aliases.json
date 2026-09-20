@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "image": "wodby/alpine",
+  "versions": [
+    {
+      "version": {
+        "env": "ALPINE324"
+      },
+      "variants": [
+        {
+          "short": [
+            "{minor}",
+            "{major}"
+          ],
+          "full": "{version}"
+        },
+        {
+          "short": [
+            "{minor}-dev",
+            "{major}-dev"
+          ],
+          "full": "{version}-dev"
+        }
+      ]
+    },
+    {
+      "version": {
+        "env": "ALPINE323"
+      },
+      "variants": [
+        {
+          "short": [
+            "{minor}"
+          ],
+          "full": "{version}"
+        }
+      ]
+    },
+    {
+      "version": {
+        "env": "ALPINE322"
+      },
+      "variants": [
+        {
+          "short": [
+            "{minor}"
+          ],
+          "full": "{version}"
+        }
+      ]
+    },
+    {
+      "version": {
+        "env": "ALPINE321"
+      },
+      "variants": [
+        {
+          "short": [
+            "{minor}"
+          ],
+          "full": "{version}"
+        }
+      ]
+    }
+  ]
+}
