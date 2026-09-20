@@ -13,6 +13,7 @@ on:
   workflow_dispatch:
 
 env:
+  GRYPE_DB_CACHE_DIR: ${{ github.workspace }}/.image-security-tools/db
   CI_BUILD_ID: ${{ github.run_id }}-${{ github.run_attempt }}
   ALPINE324: '3.24.2'
   ALPINE323: '3.23.6'
