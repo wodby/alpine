@@ -1,6 +1,10 @@
+# check=skip=InvalidDefaultArgInFrom
+
+# The Makefile supplies the required digest-pinned BASE_IMAGE argument.
 ARG ALPINE_VER
 
-FROM alpine:${ALPINE_VER}
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
 
 ARG ALPINE_DEV
 
