@@ -12,7 +12,7 @@ LABEL org.opencontainers.image.revision="${SOURCE_COMMIT}"
 ARG ALPINE_DEV
 
 ARG TARGETPLATFORM
-ARG GOTPL_VERSION=0.6.9
+ARG GOTPL_VERSION=0.6.10
 
 # Upgrade inherited packages even when their existing versions satisfy dependencies.
 RUN set -xe; \
