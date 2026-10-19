@@ -1,181 +1,103 @@
 {
   "schema": 1,
-  "release": "r3",
-  "baseline": "r2",
-  "source_commit": "42eec4909aa8d60bd20690be5e687f976cafa9de",
+  "release": "r5",
+  "baseline": "r4",
+  "source_commit": "15ea667bf1f82cc86be9e673cbd7557c5794e614",
   "targets": [
     {
       "tag": "3.24",
       "version": "3.24.2",
       "arch": "amd64",
-      "baseline_image": "wodby/alpine@sha256:15104b4c030e86d3cc10cab1b2f141f2aca2dd06bbf2d8ffd47fd06769b2f092",
-      "candidate_image": "wodby/alpine@sha256:e8f542239845db1c54f0ce1bcf0b13de9a8b4b3472fe1012c0bd2164dfdf6c34"
+      "baseline_image": "wodby/alpine@sha256:b603efdfaa90936a666e0e8ecb4ff4872efc994805dfddcf0b9505481f463f28",
+      "candidate_image": "wodby/alpine@sha256:1cd53ed39853627a8b84f1d55e90b2fb058d489e4c37e878755cb0efab743240"
     },
     {
       "tag": "3.24",
       "version": "3.24.2",
       "arch": "arm64",
-      "baseline_image": "wodby/alpine@sha256:9b45f66d6c1de0dc28b407670fadf7a350aeed22c725227728714d6e2281efda",
-      "candidate_image": "wodby/alpine@sha256:9feccaaf2f1427ff13a53243daed6342cf4bd1644822e5ff298be5e6376ead9d"
+      "baseline_image": "wodby/alpine@sha256:9d150b192744ba2cbc0ea8e780450a307c43d20e0f8ccbaa7555de19d3804cd2",
+      "candidate_image": "wodby/alpine@sha256:09613ed34e419007ca8963a21735c4a877ab164312ba957b24119aef932799e6"
     },
     {
       "tag": "3.24-dev",
       "version": "3.24.2",
       "arch": "amd64",
-      "baseline_image": "wodby/alpine@sha256:087d73e5ed2d15c524a5d4493e3630d555dbc51c3c0a38c809ad6f8579347b4c",
-      "candidate_image": "wodby/alpine@sha256:30dbafa76280d0ea0ec8564532ab778564decfce1eaa28a641c11c8908aa02fe"
+      "baseline_image": "wodby/alpine@sha256:3ad2c095eb27f6ec7ff76bc0ddbd51987967798864bd8291e3493a2e09cb1d09",
+      "candidate_image": "wodby/alpine@sha256:d8054906c3d97d9017507e75fdf042ba8d2bb203a6d0470c460d859350160394"
     },
     {
       "tag": "3.24-dev",
       "version": "3.24.2",
       "arch": "arm64",
-      "baseline_image": "wodby/alpine@sha256:22f174eddf4865a66d0e14024b84407fd422b1d0b46433562557bce264b96e65",
-      "candidate_image": "wodby/alpine@sha256:6eb43ccdc0205f5d8bfee9fe4c68904bb414949d2970f818e0b373d9254a5019"
+      "baseline_image": "wodby/alpine@sha256:af5aebe599c8d3ecc473973448c826a99dd36e2328715c94c0cf84a6d555e409",
+      "candidate_image": "wodby/alpine@sha256:0db4cd8c8fee05c57e74d6f6eaedccd6183a9495c73727fa63e63d1117fc1d3b"
     },
     {
       "tag": "3.23",
       "version": "3.23.6",
       "arch": "amd64",
-      "baseline_image": "wodby/alpine@sha256:34455b0c746d1aea56aa2a65401a9319656baa72b9ab9f45832cf07a464d6c92",
-      "candidate_image": "wodby/alpine@sha256:f001d17fe7e39355d48423297065fb922898b53eb6f72aefe3402ffd7c196ec3"
+      "baseline_image": "wodby/alpine@sha256:cabd1e5ea13542ddc003da56e67ff84c4800a0dd20a24a5e58e365a736ab8d45",
+      "candidate_image": "wodby/alpine@sha256:c14eb107e03b5bff58e093a35ca9b93316719e77e7b9c1cecd38de61abefd002"
     },
     {
       "tag": "3.23",
       "version": "3.23.6",
       "arch": "arm64",
-      "baseline_image": "wodby/alpine@sha256:c1a1acb9a240ed189ec0b8bd83fec55384b3e19d5927abe3decbad2b8401ac5a",
-      "candidate_image": "wodby/alpine@sha256:be674c582d27f977ea8301fdacf48cc03b7f268d20c3e16eb496f92afbe1e153"
+      "baseline_image": "wodby/alpine@sha256:1cdf32cbaceca00f46eb100b00667add2e8e03b66e59a2b5a00af7e6b7e5efe3",
+      "candidate_image": "wodby/alpine@sha256:607edc1f55fa133dde52912258eec9eb179ef2019129af6077501f6ab9e972ab"
     },
     {
       "tag": "3.22",
       "version": "3.22.6",
       "arch": "amd64",
-      "baseline_image": "wodby/alpine@sha256:290f1f90276da27f3266ecc1de4a4dd25ed3cb80de6fe3554f679b182c880ceb",
-      "candidate_image": "wodby/alpine@sha256:9d9871ba494e1809372ee56780c969075c7136c1f964ac16d79bb0dc6dc6caf0"
+      "baseline_image": "wodby/alpine@sha256:4281bb7947528aa8a473bf3620ffb3221b2f16e97033bce9676c9f089ebf83ae",
+      "candidate_image": "wodby/alpine@sha256:6bb742fac6a80ca17ded0b29d38d583afa07a837199cb5150a187e824f29ffa7"
     },
     {
       "tag": "3.22",
       "version": "3.22.6",
       "arch": "arm64",
-      "baseline_image": "wodby/alpine@sha256:8d704ecfad5ee0913f5b1f27407123a5ea251534d01149841df942659eb29d2b",
-      "candidate_image": "wodby/alpine@sha256:2d42ac6b4a8e73b8d7ed40205f655151da17c36a064336a640b63ab9e74f67e3"
+      "baseline_image": "wodby/alpine@sha256:ddc75ba34cc31b51fb84b060d1c47776b7c0ac80a426fb3db073f301849d28cd",
+      "candidate_image": "wodby/alpine@sha256:9bf2aa4c4891be16a9bb9e2d0f13761ab199668866f71e7c27308490e4c2e0ec"
     },
     {
       "tag": "3.21",
       "version": "3.21.8",
       "arch": "amd64",
-      "baseline_image": "wodby/alpine@sha256:72f365e13720271749ebe3207255e35948f8d9fcee09498539e29e2170c85570",
-      "candidate_image": "wodby/alpine@sha256:53112c7b69342173d7d6d5ef663aa4b5ae008001e86964df5e09125dc43b8c22"
+      "baseline_image": "wodby/alpine@sha256:0ada3b5e13f9b8a7eb2fa362d7ed00d05abdeabb02e83e424d5ea96191b12aea",
+      "candidate_image": "wodby/alpine@sha256:a9ba26f0d335b9fadcba32a0fa63a987a79e06717323d31b1d1a53fb8136fba2"
     },
     {
       "tag": "3.21",
       "version": "3.21.8",
       "arch": "arm64",
-      "baseline_image": "wodby/alpine@sha256:bb4473960e65c149ced33ae473adcc0cbd7ec512f3bd6c617ce2f78f702e7627",
-      "candidate_image": "wodby/alpine@sha256:3391d71180bef3935b447406b17e63aa23c56881af3044fdc7297a43d2848154"
+      "baseline_image": "wodby/alpine@sha256:c463f19e1b878e5ea1fe7a0579d4d0f94cdd2f7d7ab62435a8c6da10b30d1646",
+      "candidate_image": "wodby/alpine@sha256:5d19fcdc45c1aa33dbc8f58d5d5de718066868c1e17b0d65a3593876198a1a02"
     }
   ],
   "fixes": [
     {
-      "package": "zlib",
-      "from": "1.3.2-r0",
-      "to": "1.3.2-r1",
+      "package": "libexpat",
+      "from": "2.8.5-r0",
+      "to": "2.9.0-r0",
       "cves": [
-        "CVE-2026-85091"
-      ],
-      "tag": "3.24",
-      "arch": "amd64"
-    },
-    {
-      "package": "zlib",
-      "from": "1.3.2-r0",
-      "to": "1.3.2-r1",
-      "cves": [
-        "CVE-2026-85091"
-      ],
-      "tag": "3.24",
-      "arch": "arm64"
-    },
-    {
-      "package": "zlib",
-      "from": "1.3.2-r0",
-      "to": "1.3.2-r1",
-      "cves": [
-        "CVE-2026-85091"
+        "CVE-2026-102633",
+        "CVE-2026-77214"
       ],
       "tag": "3.24-dev",
       "arch": "amd64"
     },
     {
-      "package": "zlib",
-      "from": "1.3.2-r0",
-      "to": "1.3.2-r1",
+      "package": "libexpat",
+      "from": "2.8.5-r0",
+      "to": "2.9.0-r0",
       "cves": [
-        "CVE-2026-85091"
+        "CVE-2026-102633",
+        "CVE-2026-77214"
       ],
       "tag": "3.24-dev",
-      "arch": "arm64"
-    },
-    {
-      "package": "zlib",
-      "from": "1.3.2-r0",
-      "to": "1.3.2-r1",
-      "cves": [
-        "CVE-2026-85091"
-      ],
-      "tag": "3.23",
-      "arch": "amd64"
-    },
-    {
-      "package": "zlib",
-      "from": "1.3.2-r0",
-      "to": "1.3.2-r1",
-      "cves": [
-        "CVE-2026-85091"
-      ],
-      "tag": "3.23",
-      "arch": "arm64"
-    },
-    {
-      "package": "zlib",
-      "from": "1.3.2-r0",
-      "to": "1.3.2-r1",
-      "cves": [
-        "CVE-2026-85091"
-      ],
-      "tag": "3.22",
-      "arch": "amd64"
-    },
-    {
-      "package": "zlib",
-      "from": "1.3.2-r0",
-      "to": "1.3.2-r1",
-      "cves": [
-        "CVE-2026-85091"
-      ],
-      "tag": "3.22",
-      "arch": "arm64"
-    },
-    {
-      "package": "zlib",
-      "from": "1.3.2-r0",
-      "to": "1.3.2-r1",
-      "cves": [
-        "CVE-2026-85091"
-      ],
-      "tag": "3.21",
-      "arch": "amd64"
-    },
-    {
-      "package": "zlib",
-      "from": "1.3.2-r0",
-      "to": "1.3.2-r1",
-      "cves": [
-        "CVE-2026-85091"
-      ],
-      "tag": "3.21",
       "arch": "arm64"
     }
   ],
-  "notes": "Alpine package security updates\n\n- Alpine 3.21 (amd64, arm64): zlib 1.3.2-r0 -> 1.3.2-r1; fixes CVE-2026-85091\n- Alpine 3.22 (amd64, arm64): zlib 1.3.2-r0 -> 1.3.2-r1; fixes CVE-2026-85091\n- Alpine 3.23 (amd64, arm64): zlib 1.3.2-r0 -> 1.3.2-r1; fixes CVE-2026-85091\n- Alpine 3.24 (amd64, arm64): zlib 1.3.2-r0 -> 1.3.2-r1; fixes CVE-2026-85091\n- Alpine 3.24-dev (amd64, arm64): zlib 1.3.2-r0 -> 1.3.2-r1; fixes CVE-2026-85091"
+  "notes": "Alpine package security updates\n\n- Alpine 3.24-dev (amd64, arm64): libexpat 2.8.5-r0 -> 2.9.0-r0; fixes CVE-2026-102633, CVE-2026-77214"
 }
