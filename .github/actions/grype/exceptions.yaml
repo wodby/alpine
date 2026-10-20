@@ -1,0 +1,20 @@
+# Temporary acceptance of known findings, not a false-positive classification.
+# Keep the full report unfiltered.
+#
+# Alpine 3.21 published curl 8.14.1-r3 for x86_64 only; the aarch64 repository
+# still serves 8.14.1-r2, so the 3.21 arm64 image cannot install the fix yet.
+# Each rule covers only that exact build; 8.14.1-r3 and later still fail.
+# Remove once Alpine publishes 8.14.1-r3 for aarch64. Review by 2026-11-05.
+ignore:
+  - fix-state: fixed
+    reason: "Alpine 3.21 aarch64 still serves curl 8.14.1-r2; the fixed 8.14.1-r3 is x86_64-only. Review by 2026-11-05."
+    package:
+      name: curl
+      version: "8.14.1-r2"
+      type: apk
+  - fix-state: fixed
+    reason: "Alpine 3.21 aarch64 still serves libcurl 8.14.1-r2; the fixed 8.14.1-r3 is x86_64-only. Review by 2026-11-05."
+    package:
+      name: libcurl
+      version: "8.14.1-r2"
+      type: apk
