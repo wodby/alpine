@@ -18,7 +18,7 @@ env:
   ALPINE324: '3.24.3'
   ALPINE323: '3.23.7'
   ALPINE322: '3.22.7'
-  ALPINE321: '3.21.8'
+  ALPINE321: '3.21.9'
 
 jobs:
   setup:
