@@ -17,7 +17,7 @@ env:
   CI_BUILD_ID: ${{ github.run_id }}-${{ github.run_attempt }}
   ALPINE324: '3.24.3'
   ALPINE323: '3.23.7'
-  ALPINE322: '3.22.6'
+  ALPINE322: '3.22.7'
   ALPINE321: '3.21.8'
 
 jobs:
