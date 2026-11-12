@@ -50,6 +50,23 @@ This image contains the following helper scripts:
 
 See [`test.sh`](https://github.com/wodby/alpine/blob/master/test.sh) for examples.
 
+## gotpl
+
+The image does not include [gotpl](https://github.com/wodby/gotpl). Earlier
+revisions installed it in `/usr/local/bin`. An image that renders templates with
+gotpl installs a release itself:
+
+```dockerfile
+ARG TARGETPLATFORM
+ARG GOTPL_VERSION=0.6.12
+
+RUN set -ex; \
+    set -o pipefail; \
+    platform="${TARGETPLATFORM:-linux/amd64}"; \
+    url="https://github.com/wodby/gotpl/releases/download/${GOTPL_VERSION}/gotpl-${platform/\//-}.tar.gz"; \
+    wget -qO- "${url}" | tar xz --no-same-owner -C /usr/local/bin
+```
+
 ## Building with pinned base images
 
 Build with the Makefile to use the base image digests in `base-images.mk`. Local
