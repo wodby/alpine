@@ -53,6 +53,9 @@ echo "OK"
 echo
 echo "END TESTING get_archive"
 
+# gotpl is installed by the images that use it, not by this base image.
+run sh -c '! command -v gotpl'
+
 run sh -c '[[ $(compare_semver "4.3.6" "4.3.5") == 0 ]];'
 run sh -c '[[ $(compare_semver "3.3.6" "4.3.5") == 1 ]];'
 run sh -c '[[ $(compare_semver "3.3.6" "4.3.5" "<") == 0 ]];'
